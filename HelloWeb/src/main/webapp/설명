@@ -1,0 +1,36 @@
+
+
+등록: 사용자의 입력 (delForm.html)
+처리: 서블릿(delete기능: addMemberServlet)
+결과: 목록페이지 출력
+
+삭제
+
+
+
+조회: 사용자의 입력 (searchForm.html)
+처리: 서블릿(select기능: searchMemberSevblet)
+결과: 처리결과(사원번호 처리결과: 화면출력)
+
+
+DBConnection기능: DAO.java
+getConnection() => Connection 객체반환
+
+CRUD처리 : EmpDAO.java
+
+
+1.boolean insertEmp(Employee)
+2.Employee getEmp(int)
+3.boolean deleteEmp(int)
+4.List<Employee> getEmpList()
+
+
+서블릿: 목록, 입력, 삭제...
+
+
+add등록화면 만들기
+
+
+
+
+
