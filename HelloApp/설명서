@@ -24,4 +24,36 @@
 	
 	
 	
+	--------------------------------------------------------------DB
+	
+	
+	select*from employees;
+
+CREATE TABLE tbl_notice (
+notice_id       number primary key,
+notice_writer   varchar2(50) not null,
+notice_title    varchar2(300) not null,
+notice_subject  varchar2(1000) not null,
+notice_date     date default sysdate,
+hit_count       number default 0,
+attach_file     varchar2(200)
+);
+drop table tbl_notice;
+drop sequence notice_seq;
+CREATE SEQUENCE notice_seq;
+desc tbl_notice;
+
+insert into tbl_notice (notice_id, notice_writer, notice_title, notice_subject)
+values (notice_seq.nextval, 'user01', '첫번째 글', '첫번째 공지내용입니다.');
+insert into tbl_notice (notice_id, notice_writer, notice_title, notice_subject)
+values (notice_seq.nextval, 'user02', '두번째 글', '두번째 공지내용입니다.');
+insert into tbl_notice (notice_id, notice_writer, notice_title, notice_subject)
+values (notice_seq.nextval, 'user01', '세번째 글', '세번째 공지내용입니다.');
+
+select*from tbl_notice;
+
+commit;
+
+update tbl_notice set notice_sub
+	
 	
