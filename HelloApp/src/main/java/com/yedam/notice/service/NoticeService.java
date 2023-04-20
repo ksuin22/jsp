@@ -16,5 +16,4 @@ public interface NoticeService {
 	public NoticeVO getNotice(int noticeId);
 	
 	
-	
 }
