@@ -29,7 +29,6 @@
 	
 	--------------------------------------------------------------DB
 	
-	
 	select*from employees;
 
 CREATE TABLE tbl_notice (
@@ -57,6 +56,44 @@ select*from tbl_notice;
 
 commit;
 
-update tbl_notice set notice_sub
-	
-	
+
+insert into tbl_notice (notice_id,notice_writer, notice_title, notice_subject)
+select notice_seq.nextval,notice_writer, notice_title, notice_subject 
+from tbl_notice;
+
+select count(*) from tbl_notice;
+
+select rownum, a.* 
+from (select *from tbl_notice
+      order by 1 desc) a
+where rownum >0
+and   rownum <=10;
+
+select b.*
+from (select rownum rn, a.* 
+    from (select *from tbl_notice
+          order by 1 desc) a
+    where rownum <= 2*10) b
+where b.rn > (2-1) *10;
+      
+create table members(
+email varchar2(50) primary key,
+password varchar2(20) not null,
+name varchar2(50) not null,
+phone varchar2(20) not null,
+address varchar2(100),
+auth varchar2(5) default 'User', --Admin, User
+create_date date default sysdate
+);
+
+insert into members (email, password, name, phone, auth)
+values ('user1@email.com', '1234', '홍길동', '010-2334-1234','User');
+insert into members (email, password, name, phone, auth)
+values ('user2@email.com', '1234', '김유저', '010-2015-2548','User');
+insert into members (email, password, name, phone, auth)
+values ('admin@email.com', '9999', '관리자', '010-9999-9999','Admin');
+
+select *from members;
+commit;
+
+
