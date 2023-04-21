@@ -4,29 +4,62 @@
   "https://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 
-	<properties resource="com/yedam/common/db.properties"></properties>
+	<properties resource="com/yedam/common/db.properties" />
+
+
 	<settings>
-	 <setting name="mapUnderscoreToCamelCase" value="true"/>
-	 <setting name="jdbcTypeForNull" value="OTHER"/>
+
+		<setting value="true" name="mapUnderscoreToCamelCase" />
+
+		<setting value="NULL" name="jdbcTypeForNull" />
+
 	</settings>
-	
-  <typeAliases>
-  <typeAlias alias="employee" type="com.yedam.domain.Employee"/>
-  <typeAlias alias="notice" type="com.yedam.notice.domain.NoticeVO"/>
-  </typeAliases>
-  
+
+
+	<typeAliases>
+
+		<typeAlias type="com.yedam.domain.Employee" alias="employee" />
+
+		<typeAlias type="com.yedam.notice.domain.NoticeVO"
+			alias="notice" />
+
+		<typeAlias type="com.yedam.member.domain.MemberVO"
+			alias="member" />
+
+	</typeAliases>
+
+
 	<environments default="development">
+
+
 		<environment id="development">
+
 			<transactionManager type="JDBC" />
+
+
 			<dataSource type="POOLED">
-				<property name="driver" value="${driver}" />
-				<property name="url" value="${url}" />
-				<property name="username" value="${username}" />
-				<property name="password" value="${password}" />
+
+				<property value="${driver}" name="driver" />
+
+				<property value="${url}" name="url" />
+
+				<property value="${username}" name="username" />
+
+				<property value="${password}" name="password" />
+
 			</dataSource>
+
 		</environment>
+
 	</environments>
+
+
 	<mappers>
+
 		<mapper resource="com/yedam/notice/mapper/NoticeMapper.xml" />
+
+		<mapper resource="com/yedam/member/mapper/MemberMapper.xml" />
+
 	</mappers>
+
 </configuration>

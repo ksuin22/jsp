@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div id="show">
+		<div id="child">
+			<p>hello</p>
+		</div>
+		<ul>
+			<li>apple</li>
+			<li>Banana</li>
+		</ul>
+	</div>
+	<script>
+	let child = document.getElementById('child');
+	let elem = document.querySelector('li');
+	elem.innerText = '사과';
+
+	elem = document.querySelector('li:nth-of-type(2)')
+	elem.addEventListenner('click', function(){
+		alert(elem.innerText)
+	})
+	
+	console.log(elem.innerText);
+	console.log()
+	
+	let name= "홍";
+	console.log(name);
+	let num = 100;
+	num =100>20;
+	
+	console.log(typeof num);
+	
+	let obj ={}
+	obj.id= 'user01';
+	obj.name='Hong';
+	obj.hobbies=['1reading','2dd','3df'];
+	console.log(obj);
+	console.log(obj.hobbies[0]);
+	
+	
+	for(let hobby of obj.hobbies){
+		console.log(hobby);
+	}
+	
+	for(let prop in obj){
+		console.log(prop);
+	}
+	
+	console.log(window.document.children[0].children);
+	
+
+
+
+</script>
+</body>
+
+
+
+
+</html>
+

@@ -20,16 +20,18 @@ public class GetNoticeControl implements Control {
 		// 파라미터: nid
 		
 		String nid = req.getParameter("nid");
+		String page = req.getParameter("page");
+		
 		NoticeService service = new NoticeServiceImpl();
 		NoticeVO vo= service.getNotice(Integer.parseInt(nid));
 		
-		
-		//요청값
+		//요청값		
 		//req.setAttribute("noticeInfo", service.getNotice(Integer.parseInt(nid)));
-		
 		req.setAttribute("noticeInfo",vo);
-		//첨부파일이 있으면 첨부파일의 타입을 체크하기
+		req.setAttribute("pageNum", page);
 		
+		
+		//첨부파일이 있으면 첨부파일의 타입을 체크하기
 		if(vo.getAttachFile() !=null) {
 			String imgPath = req.getServletContext().getRealPath("images");
 			Path file= Paths.get(imgPath+ "/" + vo.getAttachFile());

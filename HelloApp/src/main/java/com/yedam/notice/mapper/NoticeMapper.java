@@ -16,14 +16,16 @@ public interface NoticeMapper {
 	//공지사항. CRUD: 입력,조회,수정,삭제, 목록
 	
 	public List<NoticeVO> noticeList(); //목록
-	public int insertNotice(NoticeVO vo);
-	public int updateNotice(NoticeVO vo);
-	public int deleteNotice(int NoticeId);
+	public List<NoticeVO> noticeWithPage(int page); //페이징 리스트
+	public int insertNotice(NoticeVO vo);//입력
+	public int updateNotice(NoticeVO vo);//수정
+	public int deleteNotice(int NoticeId);//삭제
 	public NoticeVO searchNotice(int noticeId); //조회
 	
 	//조회수 증가
 	public int updateCount(int noticeId);
 	
+	public int getCount();
 	
 	
 

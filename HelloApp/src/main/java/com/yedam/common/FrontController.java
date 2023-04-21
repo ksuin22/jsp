@@ -11,6 +11,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.yedam.member.control.LoginControl;
+import com.yedam.member.control.LoginFormControl;
+import com.yedam.member.control.LogoutControl;
 import com.yedam.notice.control.AddNoticeControl;
 import com.yedam.notice.control.NoticeAddForm;
 import com.yedam.notice.control.NoticeListControl;
@@ -34,8 +37,7 @@ public class FrontController extends HttpServlet {
 		encoding = config.getInitParameter("enc");
 		
 		//첫페이지
-		map.put("/main.do", new MainControl());
-		
+		map.put("/main.do", new MainControl());	
 		
 		//공지사항 목록
 		map.put("/noticeList.do", new NoticeListControl());
@@ -44,8 +46,7 @@ public class FrontController extends HttpServlet {
 		map.put("/noticeAddForm.do", new NoticeAddForm());
 		
 		//공지사항 컨트롤
-		map.put("/addNotice.do", new AddNoticeControl());
-		
+		map.put("/addNotice.do", new AddNoticeControl());		
 		
 		//번호 클릭시 조회
 		map.put("/getNotice.do", new GetNoticeControl());
@@ -55,6 +56,14 @@ public class FrontController extends HttpServlet {
 		
 		//수정 컨트롤
 		map.put("/modifyNotice.do", new modifyNoticeControl());
+		
+		//로그인 화면
+		map.put("/loginForm.do", new LoginFormControl());
+		map.put("/login.do",new LoginControl());
+		
+		//로그아웃 화면
+		map.put("/logout.do", new LogoutControl());
+
 	}
 
 	@Override
