@@ -25,6 +25,9 @@
 
 		<typeAlias type="com.yedam.member.domain.MemberVO"
 			alias="member" />
+		
+		<typeAlias type="com.yedam.notice.domain.ReplyVO"
+			alias="reply" />
 
 	</typeAliases>
 
@@ -59,6 +62,8 @@
 		<mapper resource="com/yedam/notice/mapper/NoticeMapper.xml" />
 
 		<mapper resource="com/yedam/member/mapper/MemberMapper.xml" />
+		
+		<mapper resource="com/yedam/notice/mapper/ReplyMapper.xml" />
 
 	</mappers>
 

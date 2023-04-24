@@ -6,25 +6,40 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.yedam.notice.domain.NoticeVO;
+import com.yedam.notice.domain.ReplyVO;
 import com.yedam.notice.mapper.NoticeMapper;
 import com.yedam.notice.service.NoticeService;
 import com.yedam.notice.service.NoticeServiceImpl;
+import com.yedam.notice.service.ReplyService;
+import com.yedam.notice.service.ReplyServiceImpl;
 
 public class SampleExe3 {
 	public static void main(String[] args) {
 
-		SqlSessionFactory sqlSessionFactory = com.yedam.common.DataSource.getInstance();
+//		SqlSessionFactory sqlSessionFactory = com.yedam.common.DataSource.getInstance();
+//
+//		try (SqlSession session = sqlSessionFactory.openSession(true)) {
+//			NoticeMapper mapper = session.getMapper(NoticeMapper.class);
+//
+//			List<NoticeVO> list = mapper.noticeWithPage(4);
+//			for (NoticeVO vo : list) {
+//				System.out.println(vo);
+//			}
+//
+//		}
 
-		try (SqlSession session = sqlSessionFactory.openSession(true)) {
-			NoticeMapper mapper = session.getMapper(NoticeMapper.class);
-
-			List<NoticeVO> list = mapper.noticeWithPage(4);
-			for (NoticeVO vo : list) {
-				System.out.println(vo);
-			}
-
+		ReplyService service = new ReplyServiceImpl();
+		List<ReplyVO> list = service.getReplies(50);
+		
+		for(ReplyVO vo : list) {
+			System.out.println(vo);
 		}
-
+		
+		
+		
+		
+		
+		
 	}
 
 }

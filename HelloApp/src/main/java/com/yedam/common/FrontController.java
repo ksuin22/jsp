@@ -15,8 +15,10 @@ import com.yedam.member.control.LoginControl;
 import com.yedam.member.control.LoginFormControl;
 import com.yedam.member.control.LogoutControl;
 import com.yedam.notice.control.AddNoticeControl;
+import com.yedam.notice.control.AddReplyControl;
 import com.yedam.notice.control.NoticeAddForm;
 import com.yedam.notice.control.NoticeListControl;
+import com.yedam.notice.control.ReplyListControl;
 import com.yedam.notice.control.GetNoticeControl;
 import com.yedam.notice.control.modifyNoticeControl;
 import com.yedam.notice.control.modifyNoticeForm;
@@ -63,6 +65,10 @@ public class FrontController extends HttpServlet {
 		
 		//로그아웃 화면
 		map.put("/logout.do", new LogoutControl());
+		
+		//댓글정보
+		map.put("/replyList.do", new ReplyListControl());
+		map.put("/addReply.do", new AddReplyControl());
 
 	}
 
@@ -82,7 +88,14 @@ public class FrontController extends HttpServlet {
 		
 		if(viewPage.endsWith(".do")) {
 			resp.sendRedirect(viewPage);
-			return;
+			return; //메소드 종료
+		}
+		
+		if(viewPage.endsWith(".json")) {
+			resp.setContentType("text/json;charset=UTF-8");
+			resp.getWriter().print(viewPage.substring(0,viewPage.length()-5));
+													//처음부터 시작해서 .json 빼고
+			return; //메소드종료
 		}
 		
 		//페이지 재지정.

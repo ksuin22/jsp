@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<ul id="list"></ul>
+
+	<table border='1'>
+		<thead>
+			<tr>
+				<th>id</th>
+				<th>fname</th>
+				<th>lname</th>
+				<th>삭제</th>
+			</tr>
+		</thead>
+		<tbody id="tlist">
+			<tr>
+			</tr>
+		</tbody>
+	</table>
+
+	<script>
+		// json포맷의 데이터 활용
+		// data.txt -> 홍길동 user01 010-1111-2222
+		// xml-> <data><name>홍길동</name><id>user01</id><phone>000-</phone></data>
+		//document.querySeletor('name').innerText
+		let json = '{"name": "홍길동", "id": "user01", "phone":"010-1111-2222"}';
+		//json ->object 변경.
+		let obj = JSON.parse(json);
+		console.log(obj.name, obj.id, obj.phone);
+
+		let id = document.createElement('li');
+		id.innerText = obj.id;
+		document.getElementById('list').append(id);
+
+		let name = document.createElement('li');
+		name.innerText = obj.name;
+		document.getElementById('list').append(name);
+
+		//비동기방식 처리 ==> 대표적 방식: XMLHttpRequest, fetch
+		let xhtp = new XMLHttpRequest();
+		xhtp.open('get', 'MOCK_DATA.json'); //서버에 요청할 페이지정보
+		xhtp.send();// send를 요청하면 실제 페이지 요청.
+		xhtp.onload = function() { //처리된 결과를 받아오면 함수실행 
+			console.log(xhtp);
+			let result = JSON.parse(xhtp.response); //json포맷을 자바obj타입으로 바꾸겠다.
+			
+			let tlist = document.getElementById('tlist');
+			for (let i = 0; i < result.length; i++) {
+				//console.log(result[i]);
+				let tr = document.createElement('tr');
+				
+				let td = document.createElement('td');
+				td.innerText = result[i].id;
+				tr.append(td); //tr안에 td를 넣겠다 : <tr><td>...</td></tr>
+				
+				td = document.createElement('td');
+				td.innerText = result[i].first_name;
+				tr.append(td);
+				
+				td = document.createElement('td');
+				td.innerText = result[i].last_name;
+				tr.append(td);
+				
+				//button => <td><button>삭제</button></td>
+				let btn = document.createElement('button');
+				btn.addEventListener('click', function(){
+					btn.parentElement.parentElement.remove(); //화면에서삭제
+						//상위의 상위 
+				});
+				btn.innerText ='삭제';
+				td= document.createElement('td');
+				td.append(btn);
+				tr.append(td);
+				
+				tlist.append(tr);
+			}
+		}
+	</script>
+</body>
+</html>
