@@ -14,6 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.yedam.member.control.LoginControl;
 import com.yedam.member.control.LoginFormControl;
 import com.yedam.member.control.LogoutControl;
+import com.yedam.member.control.modifyMemberControl;
+import com.yedam.member.control.modifyMemberFormControl;
 import com.yedam.notice.control.AddNoticeControl;
 import com.yedam.notice.control.AddReplyControl;
 import com.yedam.notice.control.NoticeAddForm;
@@ -68,6 +70,9 @@ public class FrontController extends HttpServlet {
 		//로그아웃 화면
 		map.put("/logout.do", new LogoutControl());
 		
+		//회원정보수정 열기
+		map.put("/modifyMemberForm.do",new modifyMemberFormControl());
+		map.put("/modifyMember.do",new modifyMemberControl());
 		//댓글정보
 		map.put("/replyList.do", new ReplyListControl());
 		map.put("/addReply.do", new AddReplyControl());
@@ -88,12 +93,13 @@ public class FrontController extends HttpServlet {
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("UTF-8");//인코딩 방식 
 		
-		
+		//어떤 요청을 했는지 구분해준다. uri부분만 가져오기 어떤.do인지
 		String uri = req.getRequestURI();
 		String context = req.getContextPath();
 		String path = uri.substring(context.length());
 		System.out.println("path: "+path);
 		
+		//그 컨트롤을 실행시킨다.
 		Control control = map.get(path);
 		String viewPage = control.execute(req, resp);
 		System.out.println("viewPage: "+viewPage);
@@ -110,6 +116,7 @@ public class FrontController extends HttpServlet {
 			return; //메소드종료
 		}
 		
+		//.tiles가 디폴트. 페이지열어줌
 		//페이지 재지정.
 		RequestDispatcher rd = req.getRequestDispatcher(viewPage);
 		rd.forward(req, resp);

@@ -28,8 +28,8 @@
 					</c:choose> <c:if test="${id != null }">
 						<div class="dropdown-menu dropdown-menu-end"
 							aria-labelledby="navbarDropdown">
-							<a class="dropdown-item" href="#!">회원정보수정</a> <a
-								class="dropdown-item" href="#!">회원정보</a>
+							<a class="dropdown-item" href="modifyMemberForm.do">회원정보수정</a> 
+							<a class="dropdown-item" href="#!">회원정보</a>
 							<div class="dropdown-divider"></div>
 							<a class="dropdown-item" href="#!">Something else here</a>
 						</div>

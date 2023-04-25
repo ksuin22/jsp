@@ -10,7 +10,8 @@ public interface MemberMapper {
 	
 	
 	public MemberVO loginCheck(MemberVO vo);
-	public MemberVO updateMember(MemberVO vo);
+	public int updateMember(MemberVO vo);
+	  //행이 업데이트 되었다.
 	
 	public List<Map<String, Object>> memberByDept();
 
