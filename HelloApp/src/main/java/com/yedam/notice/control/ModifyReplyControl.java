@@ -14,49 +14,41 @@ import com.yedam.notice.domain.ReplyVO;
 import com.yedam.notice.service.ReplyService;
 import com.yedam.notice.service.ReplyServiceImpl;
 
-public class AddReplyControl implements Control {
+public class ModifyReplyControl implements Control {
 
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp) throws SecurityException, IOException {
-		// 댓글등록 컨트롤... ing ...
-		String id= req.getParameter("id");
-		String reply = req.getParameter("reply");
-		String noticeId= req.getParameter("notice_id");
 		
+		// 파라미터(댓글번호, 변경된 댓글내용)
+		
+		//update.
 		ReplyVO vo = new ReplyVO();
-		vo.setReplyWriter(id);
-		vo.setReply(reply);
-		vo.setNoticeId(Integer.parseInt(noticeId));
-		
-		System.out.println(vo);
+		vo.setReply(req.getParameter("reply"));
+		vo.setReplyId(Integer.parseInt(req.getParameter("rid")));
 		
 		ReplyService service = new ReplyServiceImpl();
-		boolean result = service.addReply(vo);
+		service.addReply(vo);
 		
+		
+		boolean result = false;	
+		vo = new ReplyVO();
 		String json = "";
+		
 		Map<String, Object> map = new HashMap<>();
 		
 		if(result) {
-			//{"retCod ": "Success"}
-			//json = "{\"retCod \": \"Success\", \"replyId\"}";
-			// {"retCode": "Success", "data": vo}
-			//   	키   	밸류 		키 	 밸류 형식: 맵타입
+			//search.
 			map.put("retCode", "Success");
 			map.put("data",vo);
-			
-		}else {
-			//{"retCod":"Fail"}
-			
-			//json = "{\"retCod\":\"Fail\"}";
-			
+		}else {			
 			map.put("retCode", "Fail");
 		}
-		
-		
 		Gson gson = new GsonBuilder().create(); //gson 객체 만들어줌
 		json= gson.toJson(map);
-	
+		
 		return json + ".json"; //
+		
 	}
+		
 
 }

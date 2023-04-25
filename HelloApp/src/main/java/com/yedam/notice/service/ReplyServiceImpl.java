@@ -24,11 +24,14 @@ public class ReplyServiceImpl implements ReplyService {
 	@Override
 	public boolean addReply(ReplyVO vo) {
 		return mapper.insertReply(vo)==1;
-		
+
 	}
 	
-	
-	
+	@Override
+	public boolean removeReply(int replyId) {
+		// TODO Auto-generated method stub
+		return mapper.removeReply(replyId)==1;
+	}
 	
 	
 	

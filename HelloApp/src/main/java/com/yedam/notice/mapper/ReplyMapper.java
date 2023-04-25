@@ -11,5 +11,11 @@ public interface ReplyMapper {
 	//댓글등록
 	public int insertReply(ReplyVO vo);
 	
+	//댓글삭제
+	public int removeReply (int replyId);
+	
+	//댓글수정
+	public int updateReply(ReplyVO vo);
+	
 
 }

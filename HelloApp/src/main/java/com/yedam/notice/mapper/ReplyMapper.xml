@@ -15,5 +15,14 @@
 		insert into tbl_reply (reply_id, reply, reply_writer, reply_date, notice_id)
 		values (#{replyId}, #{reply}, #{replyWriter}, sysdate, #{noticeId})			
 	</insert>
+	
+	<update id="updateReply" parameterType="reply">
+	update tbl_reply set reply = #{reply} where reply_id = #{replyId}
+	</update>
+	
+	<delete id="removeReply" parameterType="int">
+	delete from tbl_reply where reply_id=#{replyId}	
+	</delete>
+	
 
 </mapper>
