@@ -28,7 +28,7 @@ public class AddNoticeControl implements Control {
 		DefaultFileRenamePolicy rn = new DefaultFileRenamePolicy();
 		
 		MultipartRequest multi 
-		= new MultipartRequest(req, saveDir,maxSize,encoding,rn);
+		= new MultipartRequest(req,saveDir,maxSize,encoding,rn);
 		
 		String writer = multi.getParameter("writer");
 		String subject= multi.getParameter("subject");

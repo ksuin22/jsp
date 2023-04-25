@@ -48,43 +48,42 @@ public class FrontController extends HttpServlet {
 		//공지사항 목록
 		map.put("/noticeList.do", new NoticeListControl());
 		
-		//공지사항 등록-화면열어주는
+		//공지사항 등록-폼
 		map.put("/noticeAddForm.do", new NoticeAddForm());
-		
-		//공지사항 컨트롤
+		//공지사항 등록-컨트롤
 		map.put("/addNotice.do", new AddNoticeControl());		
 		
-		//번호 클릭시 조회
+		//공지사항 번호 클릭시 상세조회
 		map.put("/getNotice.do", new GetNoticeControl());
 		
-		//수정페이지-열어주는 화면
+		//공지사항 수정-폼
 		map.put("/modifyNoticeForm.do", new modifyNoticeForm());
-		
-		//수정 컨트롤
+		//공지사항 수정-컨트롤
 		map.put("/modifyNotice.do", new modifyNoticeControl());
 		
-		//로그인 화면
+		//로그인화면 -폼
 		map.put("/loginForm.do", new LoginFormControl());
+		//로그인화면 -컨트롤
 		map.put("/login.do",new LoginControl());
 		
-		//로그아웃 화면
+		//로그아웃 화면-컨트롤
 		map.put("/logout.do", new LogoutControl());
 		
-		//회원정보수정 열기
+		//회원정보수정-폼, 컨트롤
 		map.put("/modifyMemberForm.do",new modifyMemberFormControl());
 		map.put("/modifyMember.do",new modifyMemberControl());
+		
 		//댓글정보
 		map.put("/replyList.do", new ReplyListControl());
+		//댓글추가
 		map.put("/addReply.do", new AddReplyControl());
-		
 		//댓글삭제
 		map.put("/removeReply.do",new RemoveReplyControl());
 		//댓글수정
 		map.put("/modifyReply.do",new ModifyReplyControl());
 		
-		//차트생성
+		//차트화면
 		map.put("/chart.do", new ChartFormControl());
-		
 		map.put("/chartData.do", new ChartDataControl());
 
 	}

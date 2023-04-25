@@ -36,6 +36,7 @@ public class LoginControl implements Control {
 			HttpSession session = req.getSession();
 			session.setAttribute("id", vo.getEmail());
 			session.setAttribute("name", vo.getName());
+
 			
 			return "noticeList.do";
 		}
