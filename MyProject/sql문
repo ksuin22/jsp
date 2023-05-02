@@ -1,0 +1,35 @@
+sql
+
+
+--상품코드,상품명,상품설명,가격,할인가격,평점,이미지
+
+CREATE TABLE tbl_product (
+prod_no number(4) primary key,
+prod_name VARCHAR2(200) not null,
+prod_exp VARCHAR2(1000),
+price number(10,1) not null,
+sale_price number(3,1) default 1,
+review varchar2(500),
+image varchar2(1000)
+);
+
+
+create SEQUENCE prod_seq;
+
+
+insert into tbl_product(prod_no, prod_name, prod_exp, price, image)
+values(prod_seq.nextval,'과테말라 안티구아','과테말라 안티구아 설명임','50000','과테말라 안티구아.jpg');
+insert into tbl_product(prod_no, prod_name, prod_exp, price, image, sale_price)
+values(prod_seq.nextval,'니카라구아','니카라구아 설명임','40000','니카라구아 더치커피.jpg','0.9');
+insert into tbl_product(prod_no, prod_name, prod_exp, price, image, sale_price)
+values(prod_seq.nextval,'브라질산토스','브라질산토스 설명ㅎㅎㅎㅎ','60000','브라질산토스.jpg','0.9');
+insert into tbl_product(prod_no, prod_name, prod_exp, price, image)
+values(prod_seq.nextval,'에티오피아 예가체프','에티오피아 예가체프 설명임','55000','에티오피아 예가체프.jpg');
+insert into tbl_product(prod_no, prod_name, prod_exp, price, image)
+values(prod_seq.nextval,'케냐AA','케냐AA 설명임','49000','케냐 AA.jpg');
+insert into tbl_product(prod_no, prod_name, prod_exp, price, image, sale_price)
+values(prod_seq.nextval,'코스타리카 따라주','코스타리카 따라주 설명임','80000','코스타리카 따라주.jpg',0.8);
+
+select * from tbl_product;
+
+commit;
